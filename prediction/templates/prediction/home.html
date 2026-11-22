@@ -1,0 +1,67 @@
+{% load static %}
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AI for Urban Dengue Outbreak — explore ward-level dengue forecasts and environmental risk indicators in Bangladesh.">
+  <title>AI for Urban Dengue Outbreak | DengueGuard</title>
+  <link rel="icon" href="{% static 'prediction/mark.svg' %}">
+  <script src="{% static 'prediction/theme.js' %}" defer></script>
+  <link rel="stylesheet" href="{% static 'prediction/style.css' %}">
+  <link rel="stylesheet" href="{% static 'prediction/home.css' %}">
+</head>
+<body class="home-page">
+  <header class="home-header">
+    <div class="nav">
+      <a class="brand" href="{% url 'home' %}?lang={{ lang }}" aria-label="DengueGuard home">
+        <img src="{% static 'prediction/mark.svg' %}" alt="">DengueGuard
+      </a>
+      <nav aria-label="Primary navigation">
+        <a class="home-nav-link" href="#how-it-works">{% if bn %}যেভাবে কাজ করে{% else %}How it works{% endif %}</a>
+        <a class="home-nav-link" href="{% url 'dashboard' %}?lang={{ lang }}">{% if bn %}ড্যাশবোর্ড{% else %}Dashboard{% endif %}</a>
+        <a href="?lang={% if bn %}en{% else %}bn{% endif %}" lang="{% if bn %}en{% else %}bn{% endif %}">{% if bn %}English{% else %}বাংলা{% endif %}</a>
+        <button id="theme" type="button" data-light="{% if bn %}লাইট{% else %}Light{% endif %}" data-dark="{% if bn %}ডার্ক{% else %}Dark{% endif %}" aria-label="Toggle color theme">{% if bn %}ডার্ক{% else %}Dark{% endif %}</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="home-main">
+    <section class="landing-hero" aria-labelledby="landing-title">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="live-dot" aria-hidden="true"></span>{% if bn %}নগর স্বাস্থ্য • পূর্বাভাস ও সচেতনতা{% else %}URBAN HEALTH • FORECASTING & AWARENESS{% endif %}</span>
+        <h1 id="landing-title">{% if bn %}AI for Urban<br><em>Dengue Outbreak</em>{% else %}AI for Urban<br><em>Dengue Outbreak</em>{% endif %}</h1>
+        <p class="hero-description">{% if bn %}বাংলাদেশের শহর ও ওয়ার্ডভিত্তিক ডেঙ্গু পরিস্থিতি বুঝতে সহায়ক একটি AI-চালিত পূর্বাভাস ড্যাশবোর্ড। সম্ভাব্য ঝুঁকি অন্বেষণ করুন এবং সিদ্ধান্ত গ্রহণে তথ্য ব্যবহার করুন।{% else %}Explore ward-level dengue forecasts across urban Bangladesh. Understand local risk patterns, examine environmental indicators, and make more informed preparedness decisions.{% endif %}</p>
+        <div class="hero-actions">
+          <a class="home-primary" href="{% url 'dashboard' %}?lang={{ lang }}">{% if bn %}ড্যাশবোর্ড চালু করুন{% else %}Launch Dashboard{% endif %}<span aria-hidden="true">↗</span></a>
+          <a class="home-secondary" href="#how-it-works">{% if bn %}আরও জানুন{% else %}Explore how it works{% endif %}<span aria-hidden="true">↓</span></a>
+        </div>
+        <p class="hero-caveat">{% if bn %}গবেষণা ও প্রদর্শনের জন্য তৈরি; চিকিৎসা পরামর্শ বা সরকারি সতর্কতার বিকল্প নয়।{% else %}Research and demonstration tool — not a medical diagnosis or an official public-health alert.{% endif %}</p>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="visual-orbit visual-orbit-one"></div><div class="visual-orbit visual-orbit-two"></div>
+        <div class="visual-grid"></div>
+        <div class="visual-card visual-card-main">
+          <div class="visual-top"><span class="visual-dot"></span><span>DENGUEGUARD / FORECAST</span><span class="visual-lines">•••</span></div>
+          <div class="visual-placeholder">{% if bn %}শহুরে ঝুঁকি বিশ্লেষণ{% else %}Urban risk outlook{% endif %}</div>
+          <div class="visual-chart"><span style="height:28%"></span><span style="height:40%"></span><span style="height:34%"></span><span style="height:65%"></span><span style="height:49%"></span><span style="height:75%"></span><span style="height:60%"></span><span style="height:87%"></span><span style="height:72%"></span></div>
+          <div class="visual-card-foot"><span>{% if bn %}ঐতিহাসিক তথ্য{% else %}Historical patterns{% endif %}</span><span>{% if bn %}পূর্বাভাস{% else %}Forecasting{% endif %}</span></div>
+        </div>
+        <div class="visual-chip visual-chip-a">↗ <span>{% if bn %}ওয়ার্ডভিত্তিক অন্তর্দৃষ্টি{% else %}Ward-level insights{% endif %}</span></div>
+        <div class="visual-chip visual-chip-b"><span class="chip-pulse"></span> {% if bn %}২–৪ সপ্তাহের পূর্বাভাস{% else %}2–4 week outlook{% endif %}</div>
+      </div>
+    </section>
+
+    <section class="home-features" id="how-it-works" aria-labelledby="features-title">
+      <div class="section-intro"><span class="section-kicker">{% if bn %}প্ল্যাটফর্মের বৈশিষ্ট্য{% else %}WHAT YOU CAN EXPLORE{% endif %}</span><h2 id="features-title">{% if bn %}তথ্য থেকে প্রস্তুতির দিকে{% else %}From data to preparedness{% endif %}</h2><p>{% if bn %}স্থানীয় তথ্য ও AI মডেলের মাধ্যমে ডেঙ্গু ঝুঁকি সম্পর্কে ধারণা নিন।{% else %}A practical view of dengue risk using historical data and a locally run prediction model.{% endif %}</p></div>
+      <div class="feature-grid">
+        <article class="feature-card"><span class="feature-icon" aria-hidden="true">▦</span><h3>{% if bn %}স্থানীয় পর্যায়ের বিশ্লেষণ{% else %}Ward-level exploration{% endif %}</h3><p>{% if bn %}বিভিন্ন শহর ও ওয়ার্ড নির্বাচন করে নির্দিষ্ট এলাকার তথ্য দেখুন।{% else %}Select an available city and ward to examine localized forecasts and indicators.{% endif %}</p></article>
+        <article class="feature-card"><span class="feature-icon" aria-hidden="true">↗</span><h3>{% if bn %}AI-চালিত পূর্বাভাস{% else %}AI-powered forecasts{% endif %}</h3><p>{% if bn %}২, ৩ বা ৪ সপ্তাহ পরের সম্ভাব্য ডেঙ্গু রোগীর সংখ্যা অন্বেষণ করুন।{% else %}Explore estimated case counts for a target week, two, three, or four weeks ahead.{% endif %}</p></article>
+        <article class="feature-card"><span class="feature-icon" aria-hidden="true">◉</span><h3>{% if bn %}পরিবেশগত সূচক{% else %}Environmental context{% endif %}</h3><p>{% if bn %}বৃষ্টিপাত, তাপমাত্রা, আর্দ্রতা ও অন্যান্য প্রাসঙ্গিক সূচক দেখুন।{% else %}View rainfall, temperature, humidity, and other factors alongside each forecast.{% endif %}</p></article>
+      </div>
+    </section>
+    <section class="bottom-cta" aria-label="Open the dashboard"><div><h2>{% if bn %}পূর্বাভাস অন্বেষণ করতে প্রস্তুত?{% else %}Ready to explore the forecast?{% endif %}</h2><p>{% if bn %}ড্যাশবোর্ডে গিয়ে আপনার শহর, ওয়ার্ড ও সময়সীমা নির্বাচন করুন।{% else %}Open the dashboard to choose your location and forecast horizon.{% endif %}</p></div><a class="home-primary" href="{% url 'dashboard' %}?lang={{ lang }}">{% if bn %}ড্যাশবোর্ড খুলুন{% else %}Open Dashboard{% endif %} <span aria-hidden="true">↗</span></a></section>
+  </main>
+  <footer>DengueGuard <span> / </span>{% if bn %}AI for Urban Dengue Outbreak • গবেষণা ও প্রদর্শনী প্রকল্প{% else %}AI for Urban Dengue Outbreak • Research & demonstration{% endif %}</footer>
+</body>
+</html>
