@@ -11,11 +11,14 @@ A local bilingual dengue forecasting dashboard for Bangladesh. Select a city and
 or manually,
 
 POWERSHELL:
+
+```sh
 winget install Python.Python.3.12
 py -3.12 -m venv .venv
 python -m pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver 127.0.0.1:8000
+```
 
 ## Run on macOS or Linux
 
